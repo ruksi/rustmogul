@@ -1,0 +1,2 @@
+disallowed-names = ["foo", "bar", "test"]
+type-complexity-threshold = 500

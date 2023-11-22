@@ -1,0 +1,44 @@
+[package]
+name = "rustmogul_cobble"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rustmogul_derive = { path = "../derive" }
+
+# https://github.com/bevyengine/bevy/blob/main/docs/cargo_features.md#default-features
+bevy = { version = "0.11", features = ["dynamic_linking"] }  # remove "dynamic_linking" if release
+bevy_ecs = { version = "0.11" }
+
+# allow selecting entities with mouse
+bevy_mod_picking = { version = "0.15", default-features = false, features = [
+    "debug",
+    "highlight",
+    "selection",
+    "backend_raycast",
+    "backend_bevy_ui",
+    # "backend_sprite",
+] }
+
+# additional enums and string macros
+strum = "0.25"
+strum_macros = "0.25"
+
+# for randomness
+rand = "0.8"
+rand_seeder = "0.2" # TODO: check if needed...
+
+# for lazy initialization
+# switch to the standard library implementation when LazyCell is in stable
+once_cell = "1.18"
+
+# for better a HashMap with get_many_mut
+hashbrown = "0.14"
+
+[dependencies.uuid]
+version = "1.5"
+features = [
+    "v4",
+    "fast-rng",
+    "macro-diagnostics"
+]
